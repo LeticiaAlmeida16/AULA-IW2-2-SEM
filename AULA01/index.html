@@ -10,8 +10,9 @@
     <script type="text/javascript" src="js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/additional-methods.min.js"></script>
     <script type="text/javascript" src="js/localization/messages_pt_BR.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     <script src=""></script>
-    <title>Validação de Formulários com JQuery</title>
+    <title>Validação de formulário - JQuery</title>
 </head>
 <script type="text/javascript">
 		
@@ -37,23 +38,32 @@
                     email: true
                 },
                 celular: {
-                    minlength: 16,
+                    requerid: true,
                     maxlength: 16,
+                    minlength: 16
                 },
                 cidade: {
                     required: true
+                },
+                cpf: {
+                    requerid: true,
+                    maxlength: 14,
+                    minlength: 14
                 },
                 idade: {
                     required: true,
                     min: 1,
                     max: 120
                 },
+                genero: {
+                    required: true
+                },
                 instagram: {
                     arrobaNoInicio: true
                 }
             },
             submitHandler: function(form){
-                alert("Sucessoooooooooo")						
+                alert("SUCESSO")						
             }
         })
     })
@@ -68,8 +78,25 @@
             <input type="text" name="nome" id="nome" class="form-control" />
         </div>
         <div class="row">
+            <label>CPF</label>
+            <input type="text" name="cpf" id="cpf" class="form-control" placeholder="xxx.xxx.xxx-xx"/>
+        </div>
+        <div class="row">
+            <label>Genêro</label>
+            <select name="genero" id="genero" class="form-control">
+                <option value="">OPCÕES</option>
+                <option value="RIBEIRÃO PIRES">masculino</option>
+                <option value="MÁUA">feminino</option>
+                <option value="SANTO ANDRÉ">outro</option>
+            </select>
+        </div>
+        <div class="row">
+            <label>Idade</label>
+            <input type="number" name="idade" id="idade" class="form-control" />
+        </div>
+        <div class="row">
             <label>E-mail</label>
-            <input type="email" name="email" id="email" class="form-control" />
+            <input type="email" name="email" id="email" class="form-control" placeholder="seuemail@gmail.com" />
         </div>	
         <div class="row">
             <label>Celular</label>
@@ -82,19 +109,6 @@
                 <option value="RIBEIRÃO PIRES">RIBEIRÃO PIRES</option>
                 <option value="MÁUA">MÁUA</option>
                 <option value="SANTO ANDRÉ">SANTO ANDRÉ</option>
-            </select>
-        </div>
-        <div class="row">
-            <label>Idade</label>
-            <input type="number" name="idade" id="idade" class="form-control" />
-        </div>
-        <div class="row">
-            <label>Genêro</label>
-            <select name="cidade" id="cidade" class="form-control">
-                <option value="">OPCÕES</option>
-                <option value="RIBEIRÃO PIRES">masculino</option>
-                <option value="MÁUA">feminino</option>
-                <option value="SANTO ANDRÉ">outro</option>
             </select>
         </div>
         <div class="row">

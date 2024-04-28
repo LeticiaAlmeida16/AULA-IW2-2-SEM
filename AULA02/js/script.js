@@ -1,5 +1,6 @@
 const mario = document.querySelector('.mario')
 const pipe = document.querySelector('.pipe')
+const nuvens = document.querySelector('.nuvens')
 
 const jump = () => {
     mario.classList.add('jump')
@@ -13,6 +14,7 @@ const loop = setInterval(() => {
 
     const pipePosicao = pipe.offsetLeft
     const marioPosicao = +window.getComputedStyle(mario).bottom.replace('px', '')
+    const nuvensPosicao = nuvens.offsetLeft
 
     console.log(marioPosicao)
 
@@ -26,6 +28,9 @@ const loop = setInterval(() => {
         mario.src = './img/game-over.png'
         mario.style.width = '75px'
         mario.style.marginLeft = '47px'
+
+        nuvens.style.animation = 'none'
+        nuvens.style.left = `${nuvensPosicao}px`
 
         clearInterval(loop)
     }

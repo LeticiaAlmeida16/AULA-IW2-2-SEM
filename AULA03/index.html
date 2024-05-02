@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    
+    <title>JOGO DO MÁRIO</title>
+</head>
+<body>
+    <div class="game-board">
+        <img src="img/clouds.png" class="nuvens">
+        <img src="img/mario.gif" class="mario">
+        <img src="img/pipe.png" class="pipe">
+    </div>
+
+    <script>
+        $(document).ready(function() {
+        const mario = $('.mario')
+        const pipe = $('.pipe')
+        const nuvens = $('.nuvens')
+
+        const jump = () => {
+            mario.addClass('jump')
+
+            setTimeout(() => {
+                mario.removeClass('jump')
+            }, 500);
+        };
+
+        const loop = setInterval(() => {
+
+            const pipePosicao = pipe.offset().left
+            const marioPosicao = parseInt(mario.css('bottom'))
+            const nuvensPosicao = nuvens.offset().left
+
+            console.log(marioPosicao);
+
+            if (pipePosicao <= 120 && pipePosicao > 0 && marioPosicao < 80){
+                pipe.css('animation', 'none')
+                pipe.css('left', `${pipePosicao}px`)
+
+                mario.css('animation', 'none')
+                mario.css('bottom', `${marioPosicao}px`)
+
+                mario.attr('src', './img/game-over.png')
+                mario.css('width', '75px')
+                mario.css('marginLeft', '47px')
+
+                nuvens.css('animation', 'none')
+                nuvens.css('left', `${nuvensPosicao}px`)
+
+                clearInterval(loop)
+            }
+
+        }, 10)
+
+        $(document).keydown(jump)
+
+        })
+    </script>
+</body>
+</html>

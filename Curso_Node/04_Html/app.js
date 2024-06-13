@@ -16,7 +16,7 @@ app.get('/blog', function(req, res){
 })
 
 app.get('/cadastro/:nome/:cargo', function(req, res){
-    res.send("Nome: " + req.params.nome + "\nCargo: " + req.params.cargo)
+    res.send("Nome : " + req.params.nome + "\nCargo: " + req.params.cargo)
 
     // res.send(req.params)
 })
